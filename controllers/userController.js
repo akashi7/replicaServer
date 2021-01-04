@@ -39,7 +39,8 @@ exports.createForum = async (req, res) => {
 		if (err) throw err;
 		else {
 			let date = new Date();
-			let createdAt = date.toLocaleString();
+			let re = date.toLocaleString();
+			let createdAt = moment(re).tz('Rwanda').format();
 			connection.query("INSERT INTO forums SET ?", {
 				username: username,
 				topic: topic,
@@ -148,7 +149,8 @@ exports.createComment = async (req, res) => {
 		if (err) throw err;
 		else {
 			let date = new Date();
-			let createdAt = date.toLocaleString();
+			let re = date.toLocaleString();
+			let createdAt = moment(re).tz('Rwanda').format();
 			connection.query("INSERT INTO comments SET ?", {
 				topicid: id,
 				username: username,
@@ -195,8 +197,9 @@ exports.editComment = async (req, res) => {
 				if (err) throw err;
 				else {
 					let date = new Date();
-					let editedAt = date.toLocaleString();
-					connection.query("UPDATE comments SET comment=?, edited=? WHERE id=?", [newcomment, editedAt, id], (err, results) => {
+					let re = date.toLocaleString();
+					let createdAt = moment(re).tz('Rwanda').format();
+					connection.query("UPDATE comments SET comment=?, edited=? WHERE id=?", [newcomment, createdAt, id], (err, results) => {
 						if (err) throw err;
 						else {
 							res.send({
