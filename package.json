@@ -28,6 +28,7 @@
     "uuid": "^8.3.1"
   },
   "devDependencies": {
+    "@types/mysql": "^2.15.17",
     "nodemon": "^2.0.6"
   }
 }
