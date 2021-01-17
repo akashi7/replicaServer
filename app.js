@@ -6,6 +6,8 @@ const home = require('./routes/home');
 const reporter = require('./routes/reporter');
 const auth = require('./routes/authRoutes');
 const user = require('./routes/user');
+const admin = require('./routes/admin');
+
 
 
 
@@ -32,6 +34,7 @@ app.use('/home', home);
 app.use('/reporter', reporter);
 app.use('/auth', auth);
 app.use('/user', user);
+app.use('/admin', admin);
 
 
 

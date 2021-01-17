@@ -84,20 +84,37 @@ exports.Login = async (req, res) => {
 						});
 					}
 					else {
-						const { id, username, isadmin } = result[0];
-						const token = jwt.sign(
-							{ id, isadmin, username },
-							process.env.JWT_SECRET,
-							{
-								expiresIn: process.env.JWT_EXPIRES_IN,
-							}
-						);
-						res.send({
-							status: 200,
-							message: ` ${username} loged in`,
-							token,
-							username
-						});
+						if (result[0].username === 'admin') {
+							const { id, username, isadmin } = result[0];
+							const token = jwt.sign(
+								{ id, isadmin, username },
+								process.env.JWT_SECRET,
+								{
+									expiresIn: process.env.JWT_EXPIRES_IN,
+								}
+							);
+							res.send({
+								status: 208,
+								message: ` ${username} loged in`,
+								token,
+								username
+							});
+						}
+						else {
+							const token = jwt.sign(
+								{ id, isadmin, username },
+								process.env.JWT_SECRET,
+								{
+									expiresIn: process.env.JWT_EXPIRES_IN,
+								}
+							);
+							res.send({
+								status: 200,
+								message: ` ${username} loged in`,
+								token,
+								username
+							});
+						}
 					}
 					connection.release();
 				}
