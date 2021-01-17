@@ -1,6 +1,6 @@
 const db = require('../database/mysql');
 
-exports.adminViewAllUsers = (res) => {
+exports.adminViewAllUsers = (req, res) => {
   db.getConnection((err, connection) => {
     if (err) throw err;
     else {
