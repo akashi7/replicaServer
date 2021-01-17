@@ -101,6 +101,7 @@ exports.Login = async (req, res) => {
 							});
 						}
 						else {
+							const { id, username, isadmin } = result[0];
 							const token = jwt.sign(
 								{ id, isadmin, username },
 								process.env.JWT_SECRET,
