@@ -5,6 +5,7 @@ const moment = require('moment-timezone');
 
 dotenv.config();
 
+
 const upload = async (profilepic) => {
 	try {
 
@@ -471,17 +472,4 @@ exports.uploadPhoto = async (req, res) => {
 			message: 'Error uploading Photo'
 		});
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
 };
